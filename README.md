@@ -9,3 +9,7 @@
 
 ## 启动项目
 - main.go
+
+## 启动后访问
+- http://localhost:8088/index
+- http://localhost:8088/index/err
