@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"fmt"
-	"gin-web-template/model"
+	"gin-web-template/dto"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -18,7 +18,7 @@ func Recover(c *gin.Context) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack() //打印错误堆栈信息
-			c.JSON(http.StatusOK, model.Fail(errorToString(r)))
+			c.JSON(http.StatusOK, dto.Fail(errorToString(r)))
 			c.Abort() //终止后续接口调用，不加的话,还会继续接口后续代码
 		}
 	}()
