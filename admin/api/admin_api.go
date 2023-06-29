@@ -21,6 +21,8 @@ func (t AdminApi) init(g *gin.Engine) {
 	group.POST("/insert", t.insert)
 	group.POST("/update", t.update)
 	group.POST("/delete", t.delete)
+	group.POST("/login", t.login)
+	group.GET("/getUserInfo", t.getUserInfo)
 }
 
 // AdminApi 控制器
@@ -42,7 +44,7 @@ func (t AdminApi) list(c *gin.Context) {
 func (t AdminApi) one(c *gin.Context) {
 	var v model.Admin
 	_ = c.Bind(&v)
-	c.JSON(http.StatusOK, model.OkData(service.AdminService.One(v.AdminId)))
+	c.JSON(http.StatusOK, model.OkData(service.AdminService.One(v.Id)))
 }
 
 // 修改记录
@@ -66,4 +68,15 @@ func (t AdminApi) delete(c *gin.Context) {
 	_ = c.Bind(&t)
 	service.AdminService.Delete(t.Ids)
 	c.JSON(http.StatusOK, model.OkMsg("删除成功！"))
+}
+
+func (t AdminApi) login(c *gin.Context) {
+	var v model.Admin
+	_ = c.ShouldBindJSON(&v)
+	// 登入成功,返回token
+	c.JSON(http.StatusOK, model.OkData(service.AdminService.Login(v)))
+}
+
+func (t AdminApi) getUserInfo(c *gin.Context) {
+	c.JSON(http.StatusOK, model.OkData(service.AdminService.GetUserInfo()))
 }

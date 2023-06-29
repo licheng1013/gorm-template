@@ -7,7 +7,6 @@ import { PageEnum } from '/@/enums/pageEnum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
 import { GetUserInfoModel, LoginParams } from '/@/api/sys/model/userModel';
-import { doLogout, getUserInfo, loginApi } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { router } from '/@/router';
@@ -16,6 +15,7 @@ import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 import { isArray } from '/@/utils/is';
 import { h } from 'vue';
+import {adminLogin, adminUserInfo} from "@/api/custom/admin";
 
 interface UserState {
   userInfo: Nullable<UserInfo>;
@@ -90,9 +90,11 @@ export const useUserStore = defineStore({
     ): Promise<GetUserInfoModel | null> {
       try {
         const { goHome = true, mode, ...loginParams } = params;
-        const data = await loginApi(loginParams, mode);
-        const { token } = data;
-
+        //const data = await loginApi(loginParams, mode); // 项目带的
+        // 改动->
+        const data = await adminLogin(loginParams, mode);
+        // <-
+        let token = data.token;
         // save token
         this.setToken(token);
         return this.afterLoginAction(goHome);
@@ -124,8 +126,12 @@ export const useUserStore = defineStore({
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
-      const userInfo = await getUserInfo();
+    //  const userInfo = await getUserInfo(); // 原有的
+      // 改动->
+      const userInfo = await adminUserInfo();
+      // <-
       const { roles = [] } = userInfo;
+      roles.push({ value: 'super', roleName: '超级管理员' })
       if (isArray(roles)) {
         const roleList = roles.map((item) => item.value) as RoleEnum[];
         this.setRoleList(roleList);
@@ -142,7 +148,9 @@ export const useUserStore = defineStore({
     async logout(goLogin = false) {
       if (this.getToken) {
         try {
-          await doLogout();
+          //改动 ->
+          //await doLogout();
+          //<-
         } catch {
           console.log('注销Token失败');
         }

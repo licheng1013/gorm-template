@@ -6,7 +6,7 @@ import (
 
 type Admin struct {
 	// 管理员id
-	AdminId int64 `json:"adminId" form:"adminId" gorm:"primaryKey" `
+	Id int64 `json:"id" form:"id" gorm:"primaryKey" `
 	// 账号
 	UserName string `json:"userName" form:"userName" `
 	// 密码

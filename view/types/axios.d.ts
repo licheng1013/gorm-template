@@ -40,6 +40,10 @@ export interface Result<T = any> {
   type: 'success' | 'error' | 'warning';
   message: string;
   result: T;
+  // 增加->
+  data: T;
+  msg: string;
+  //<-
 }
 
 // multipart/form-data: upload file

@@ -51,11 +51,11 @@ func AuthAdmin(c *gin.Context) {
 	}
 	user := service.AdminService.One(data.ID)
 	// TODO 此处应该是查询管理员账号
-	if user.AdminId == 0 {
+	if user.Id == 0 {
 		tool.AssertErr("用户不存在")
 	}
 	// 保存用户信息到上下文中
-	app.LocalData.SaveCtx(user.AdminId)
+	app.LocalData.SaveCtx(user.Id)
 	c.Next()
 	app.LocalData.ClearCtx()
 }
