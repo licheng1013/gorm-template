@@ -46,6 +46,7 @@ func (t adminService) Insert(v model.Admin) {
 
 // Delete 根据主键删除
 func (t adminService) Delete(ids []int) {
+	tool.AssertErr("测试不允许删除")
 	t.db().Delete(model.Admin{}, ids)
 }
 

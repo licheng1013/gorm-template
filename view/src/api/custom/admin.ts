@@ -26,3 +26,13 @@ export function adminUserInfo() {
 export function adminList(params: any) {
   return defHttp.get<any>({ url: "/admin/list", params });
 }
+
+// adminDelete
+export function adminDelete(params: any) {
+  return defHttp.post<any>({ url: "/admin/delete", params });
+}
+
+// adminInsert
+export function adminInsert(params: any) {
+  return defHttp.post<any>({ url: "/admin/insert", params });
+}

@@ -1,12 +1,98 @@
 <template>
-  <BasicTable @register="registerTable">
-  </BasicTable>
+  <div class="p-4">
+    <BasicTable @register="registerTable">
+      <template #toolbar>
+        <a-button type="primary" @click="openModal">
+          添加
+        </a-button>
+      </template>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'action'">
+          <TableAction
+            :actions="[
+              {
+                label: '删除',
+                icon: 'ic:outline-delete-outline',
+                onClick: handleDelete.bind(null, record),
+              },
+            ]"
+          />
+        </template>
+      </template>
+    </BasicTable>
+    <BasicModal @register="registerAdd" v-bind="$attrs" title="增加" :helpMessage="['增加记录']"
+                width="700px" @ok="onCloseModal">
+      <BasicForm @register="registerForm" @submit="handleSubmit"/>
+    </BasicModal>
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import { BasicColumn, BasicTable, useTable } from "/@/components/Table";
-import { adminList } from "@/api/custom/admin";
-import { formatToDateTime } from "@/utils/dateUtil";
+import {BasicColumn, BasicTable, FormSchema, useTable,TableAction} from "/@/components/Table";
+import {adminDelete, adminInsert, adminList} from "@/api/custom/admin";
+import {formatToDateTime} from "@/utils/dateUtil";
+import {useMessage} from "@/hooks/web/useMessage";
+import {useModal} from "@/components/Modal";
+import {useForm} from "@/components/Form";
+
+const { createMessage, createConfirm } = useMessage();
+const {success} = createMessage;
+const [registerAdd, {openModal, closeModal}] = useModal();
+
+const schemas: FormSchema[] = [
+  {
+    field: "title",
+    component: "Input",
+    label: "标题",
+    required: true
+  },
+  {
+    field: "url",
+    component: "Input",
+    label: "音频地址",
+    required: true
+  },
+  {
+    field: "lrc",
+    component: "Input",
+    label: "字幕地址"
+  },
+  {
+    field: "audioTime",
+    component: "InputNumber",
+    label: "音频时间",
+    required: true
+  }
+];
+
+const handleSubmit = (values: Recordable) => {
+  // 时间转换
+  console.log(values);
+  adminInsert(values).then(res => {
+    // 插入成功
+    success("Success message");
+    reload();
+    resetFields();
+  });
+
+};
+
+const onCloseModal = () => {
+  closeModal();
+  submit();
+};
+
+
+const [registerForm, {submit, resetFields}] = useForm({
+  schemas,
+  showActionButtonGroup: false,
+  labelWidth: 120,
+  size: "large",
+  baseColProps: {
+    xs: 22
+  }
+});
 
 
 const columns: BasicColumn[] = [
@@ -34,18 +120,18 @@ const columns: BasicColumn[] = [
 ];
 
 
-const [registerTable, { reload }] = useTable({
-  canResize:true,
-  loading:false,
-  striped:false,
-  bordered:false,
-  showTableSetting:true,
-  useSearchForm:true,
-  tableSetting: {
-    setting:false,
-    fullScreen: true
-  },
+const [registerTable, {reload}] = useTable({
+  canResize: true,
+  loading: false,
+  striped: false,
+  bordered: false,
+  showTableSetting: false,
+  useSearchForm: true,
+  title: '用户列表',
+  titleHelpMessage: "温馨提醒",
   formConfig: {
+    autoSubmitOnEnter: true,
+    // 关闭折叠
     labelWidth: 50,
     schemas: [
       {
@@ -60,17 +146,38 @@ const [registerTable, { reload }] = useTable({
       }
     ],
   },
-  title: '用户列表',
-  titleHelpMessage:"温馨提醒",
+
   api: async (params) => {
     params.size = params.pageSize
     console.log(params);
     let data = await adminList(params)
-    return {items:data.list, total: data.total}
+    return {items: data.list, total: data.total}
   },
   columns: columns,
-  pagination: { pageSize: 10},
+  pagination: {pageSize: 10},
+  actionColumn: {
+    width: 160,
+    title: "Action",
+    dataIndex: "action"
+    // slots: { customRender: 'action' },
+  }
 });
+
+
+function handleDelete(record: Recordable) {
+  createConfirm({
+    iconType: "error",
+    title: "提示",
+    content: "你正在进行删除操作...",
+    onOk: async () => {
+      adminDelete({ids: [record.id]}).then(res => {
+        success("删除成功");
+        reload();
+      });
+    }
+  });
+}
+
 </script>
 
 <style scoped lang="less">

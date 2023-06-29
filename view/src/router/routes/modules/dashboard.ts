@@ -4,7 +4,7 @@ import { LAYOUT } from '/@/router/constant';
 
 const dashboard: AppRouteModule = {
   path: '/dashboard',
-  name: 'Dashboard',
+  name: 'HomeView',
   component: LAYOUT,
   redirect: '/dashboard/analysis',
   meta: {
