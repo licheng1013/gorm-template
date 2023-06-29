@@ -20,7 +20,7 @@
         </template>
       </template>
     </BasicTable>
-    <BasicModal @register="registerAdd" v-bind="$attrs" title="增加" :helpMessage="['增加记录']"
+    <BasicModal @register="registerAdd" v-bind="$attrs" title="添加" :helpMessage="['添加记录']"
                 width="700px" @ok="onCloseModal">
       <BasicForm @register="registerForm" @submit="handleSubmit"/>
     </BasicModal>
@@ -33,8 +33,8 @@ import {BasicColumn, BasicTable, FormSchema, useTable,TableAction} from "/@/comp
 import {adminDelete, adminInsert, adminList} from "@/api/custom/admin";
 import {formatToDateTime} from "@/utils/dateUtil";
 import {useMessage} from "@/hooks/web/useMessage";
-import {useModal} from "@/components/Modal";
-import {useForm} from "@/components/Form";
+import { BasicModal, useModal } from "@/components/Modal";
+import {BasicForm,useForm} from "@/components/Form";
 
 const { createMessage, createConfirm } = useMessage();
 const {success} = createMessage;
@@ -42,26 +42,27 @@ const [registerAdd, {openModal, closeModal}] = useModal();
 
 const schemas: FormSchema[] = [
   {
-    field: "title",
+    field: "userName",
     component: "Input",
-    label: "标题",
+    label: "账号",
     required: true
   },
   {
-    field: "url",
+    field: "password",
     component: "Input",
-    label: "音频地址",
+    label: "密码",
     required: true
   },
   {
-    field: "lrc",
+    field: "salt",
     component: "Input",
-    label: "字幕地址"
+    label: "盐",
+    required: true
   },
   {
-    field: "audioTime",
-    component: "InputNumber",
-    label: "音频时间",
+    field: "nickName",
+    component: "Input",
+    label: "昵称",
     required: true
   }
 ];
