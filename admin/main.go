@@ -1,9 +1,9 @@
 package main
 
 import (
+	"admin/api"
+	"common/app"
 	"context"
-	_ "gin-web-template/api" //通过包初始化注册
-	"gin-web-template/common"
 	"log"
 	"net/http"
 	"os"
@@ -11,21 +11,17 @@ import (
 	"time"
 )
 
-func init() {
-	//设置日志打印
-	log.SetPrefix("系统日志: ")
-	log.SetFlags(log.LstdFlags + log.Lshortfile)
-}
-
 func main() {
-	port := "8088"
-	log.Println("http://localhost:" + port)
+	data, _ := os.ReadFile("app.yml")
+	app.ParseAppConfig(data)
+	app.MysqlInit()
+	api.Init()
+	log.Println("http://localhost" + app.Config.Port)
 	//下面都是优雅停机方式
 	srv := &http.Server{
-		Addr:    "0.0.0.0:" + port,
-		Handler: common.R,
+		Addr:    "0.0.0.0" + app.Config.Port,
+		Handler: app.R,
 	}
-
 	go func() {
 		// 服务连接
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {

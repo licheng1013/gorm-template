@@ -1,4 +1,4 @@
-package dto
+package model
 
 type Result struct {
 	Code int         `json:"code"`
