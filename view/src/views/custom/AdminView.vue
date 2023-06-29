@@ -46,10 +46,16 @@ const [registerTable, { reload }] = useTable({
     fullScreen: true
   },
   formConfig: {
+    labelWidth: 50,
     schemas: [
       {
         field: `userName`,
         label: `账号`,
+        component: 'Input',
+      },
+      {
+        field: `nickName`,
+        label: `昵称`,
         component: 'Input',
       }
     ],
