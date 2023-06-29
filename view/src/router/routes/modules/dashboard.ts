@@ -12,7 +12,7 @@ const dashboard: AppRouteModule = {
     hideChildrenInMenu: true,
     orderNo: 10,
     icon: 'ion:grid-outline',
-    title: t('routes.dashboard.dashboard'),
+    title: "首页",
   },
   children: [
     {
@@ -20,7 +20,6 @@ const dashboard: AppRouteModule = {
       name: 'HomeView',
       component: () => import('/@/views/custom/HomeView.vue'),
       meta: {
-        icon: 'ion:grid-outline',
         title: "首页",
         hideMenu: true,
       },

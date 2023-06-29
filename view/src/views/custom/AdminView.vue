@@ -4,35 +4,27 @@
 </template>
 
 <script setup lang="ts">
-import { BasicColumn, BasicTable, ColumnChangeParam, useTable } from "/@/components/Table";
+import { BasicColumn, BasicTable, useTable } from "/@/components/Table";
 import { adminList } from "@/api/custom/admin";
-import { formatToDate, formatToDateTime } from "@/utils/dateUtil";
+import { formatToDateTime } from "@/utils/dateUtil";
 
 
 const columns: BasicColumn[] = [
   {
     title: "账号",
-    dataIndex: "tel",
+    dataIndex: "userName",
+  },
+  {
+    title: "密码",
+    dataIndex: "password",
+  },
+  {
+    title: "盐",
+    dataIndex: "salt",
   },
   {
     title: "昵称",
-    dataIndex: "nickname",
-  },
-  {
-    title: "头像",
-    dataIndex: "avatar",
-  },
-  {
-    title: "性别",
-    dataIndex: "sex",
-    format: (text, record) => {
-      if (record.sex === 1) {
-        return "男"
-      }else if (record.sex === 2) {
-        return "女"
-      }
-      return "未知"
-    }
+    dataIndex: "nickName",
   },
   {
     title: "创建时间",
@@ -56,7 +48,7 @@ const [registerTable, { reload }] = useTable({
   formConfig: {
     schemas: [
       {
-        field: `tel`,
+        field: `userName`,
         label: `账号`,
         component: 'Input',
       }

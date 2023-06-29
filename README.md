@@ -9,19 +9,20 @@
 
 ## 前端项目
 
-- 定制于此前端开源项目 https://github.com/vbenjs/vue-vben-admin
+- 定制于此前端开源项目 https://github.com/vbenjs/vue-vben-admin (支持功能请通过链接查看)
 - 细节改动:
-- view/src/store/modules/user.ts 
+- view/src/store/modules/user.ts
 - view/src/utils/http/axios/index.ts
 - view/types/axios.d.ts
 - 常用配置:
 - view/.env.development 配置开发环境
-- view/.env.production  配置生成环境
+- view/.env.production 配置生成环境
 - 登入请求:
 - view/src/api/custom/admin.ts
-- 接口or页面存放目录
+- 增加页面和接口
 - 接口 -> view/src/api/custom
 - 页面 -> view/src/views/custom
+- 路由 -> view/src/router/routes/modules
 
 
 ## 快速上手
