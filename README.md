@@ -25,6 +25,13 @@
 - 路由 -> view/src/router/routes/modules
 
 
+## 后端项目
+- 基于gin+gorm打造的
+- 使用库:
+- 工具: https://github.com/duke-git/lancet 
+- Jwt: https://github.com/golang-jwt/jwt/
+
+
 ## 快速上手
 
 - 1.克隆本项目
