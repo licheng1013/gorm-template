@@ -9,7 +9,7 @@
 
 ## 前端项目
 
-- 定制于此开源项目
+- 定制于此前端开源项目
 - 前端项目模板: https://github.com/vbenjs/vue-vben-admin
 
 ## 快速上手
