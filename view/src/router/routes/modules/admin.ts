@@ -19,6 +19,7 @@ const dashboard: AppRouteModule = {
       name: 'AdminView',
       component: () => import('/@/views/custom/AdminView.vue'),
       meta: {
+        title: "用户",
         hideMenu: true,
       },
     },
