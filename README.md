@@ -19,7 +19,7 @@
 - view/.env.production  配置生成环境
 - 登入请求:
 - view/src/api/custom/admin.ts
-- 接口页面存放目录
+- 接口or页面存放目录
 - 接口 -> view/src/api/custom
 - 页面 -> view/src/views/custom
 
