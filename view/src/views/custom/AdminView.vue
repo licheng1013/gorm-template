@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div>
     <BasicTable @register="registerTable">
       <template #toolbar>
         <a-button type="primary" @click="openModal">
