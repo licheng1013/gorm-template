@@ -36,7 +36,10 @@
 
 - 1.克隆本项目
 - 2.创建数据库并导入sql -> t_gorm.sql, 修改 admin/app.yml 配置文件 mysql 链接
-- 3.运行admin/main.go
+- 3.安装go依赖并运行admin/main.go
+- 4.安装pnpm
+- 5.进入view目录 运行pnpm install
+- 6.进入view目录 pnpm run dev
 
 ### 后端关键部分
 
@@ -46,6 +49,9 @@
 - common/model 数据库模型
 - common/service 业务逻辑
 - common/tool 工具类
+
+### 扩展
+- 暂无
 
 ## 帮助
 
