@@ -1,0 +1,10 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #保证插入的时间不会少8小时,取出来少8小时
+    url: jdbc:mysql://192.168.101.90:3306/t_gorm?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
