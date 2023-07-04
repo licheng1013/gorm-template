@@ -1,0 +1,22 @@
+import { ErrorMessageMode } from "#/axios";
+import { defHttp } from "@/utils/http/axios";
+
+// 列表
+export function ${tableName}List(params: any) {
+  return defHttp.get<any>({ url: "/${path}/list", params });
+}
+
+// 删除
+export function ${tableName}Delete(params: any) {
+  return defHttp.post<any>({ url: "/${path}/delete", params });
+}
+
+// 新增
+export function ${tableName}Insert(params: any) {
+  return defHttp.post<any>({ url: "/${path}/insert", params });
+}
+
+// 修改
+export function ${tableName}Update(params: any) {
+  return defHttp.post<any>({ url: "/${path}/update", params });
+}
