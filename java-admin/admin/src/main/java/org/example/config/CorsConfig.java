@@ -21,7 +21,7 @@ public class CorsConfig {
         // 2允许任何头
         corsConfiguration.addAllowedHeader("*");
         // 3允许ajax异步请求带cookie信息
-        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowCredentials(false);
         // 4允许任何方法（post、get等）
         corsConfiguration.addAllowedMethod("*");
         // 5设置OPTIONS预检请求的过期时间

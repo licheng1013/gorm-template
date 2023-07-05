@@ -1,6 +1,7 @@
 package org.example.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.util.HttpServletUtil;
 import org.example.util.R;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,6 +19,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(ServiceException.class)
     public R<String> doHandleServiceException(ServiceException e) {
+        // 打印请求参数
+        log.info("请求参数: {}", HttpServletUtil.getParamMap());
+        e.printStackTrace();
         return R.fail(e.getMessage());
     }
 

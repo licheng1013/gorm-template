@@ -5,4 +5,8 @@ import org.example.entity.Admin;
 
 public interface AdminService extends IService<Admin> {
 
+    Object login(Admin v);
+
+    Object getUserInfo();
+
 }

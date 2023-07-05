@@ -55,4 +55,7 @@ public class AssertUtil {
         }
     }
 
+    public static void AssertError(String error) {
+        throw new ServiceException(error);
+    }
 }
