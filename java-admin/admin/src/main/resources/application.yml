@@ -8,3 +8,8 @@ spring:
     url: jdbc:mysql://192.168.101.90:3306/t_gorm?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: t_

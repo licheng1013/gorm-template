@@ -1,4 +1,5 @@
 .idea
 # 编译后的文件！
-main
+main.exe
+main.sh
 http-test
