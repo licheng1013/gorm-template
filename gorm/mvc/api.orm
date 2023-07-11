@@ -1,8 +1,10 @@
 package ${model}
 
 import (
+	"common/app"
+	"common/model"
+	"common/service"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 	"net/http"
 )
 
