@@ -1,0 +1,7 @@
+export function ${methodName}(params) {
+  return request({
+    url: '${path}',
+    method: '${method}',
+    params
+  })
+}
