@@ -2,48 +2,27 @@
 
 ## 介绍
 
-- 本项目作为后端项目模板
-- 致力于提供一个简单的后台项目模板，方便快速开发
+- Goland Gorm插件示例模板项目, 插件件地址: [gorm](https://plugins.jetbrains.com/plugin/20411-gorm/)
+- 同时也是一个前后端分离的后台管理系统模板项目
+- 可基于此项目进行二次开发.
 
 ## 要求
-- 安装 go 1.20+
+- 安装 go 1.19+
 - 安装 node 16+
 - 安装 pnpm 8.6+
 
-## 支持技术
+## 技术
 
-- [x] Go 
-- [ ] Java
-- [ ] Rust
-- 后续可能会支持更多语言
-
-### Go
-- 配套Goland插件: https://plugins.jetbrains.com/plugin/20411-gorm/
-- 用于生成后端/前端模板代码
-
-## 前端项目
-
-- 定制于此前端开源项目 https://github.com/vbenjs/vue-vben-admin (支持功能请通过链接查看)
-- 细节改动:
-- view/src/store/modules/user.ts
-- view/src/utils/http/axios/index.ts
-- view/types/axios.d.ts
-- 常用配置:
-- view/.env.development 配置开发环境
-- view/.env.production 配置生成环境
-- 登入请求:
-- view/src/api/custom/admin.ts
-- 增加页面和接口
-- 接口 -> view/src/api/custom
-- 页面 -> view/src/views/custom
-- 路由 -> view/src/router/routes/modules
-
-
-## 后端项目
-- 基于gin+gorm打造的
-- 使用库:
-- 工具: https://github.com/duke-git/lancet 
-- Jwt: https://github.com/golang-jwt/jwt/
+| 技术列            | 描述       | 官网                                                       | 整合 |
+|----------------|----------|----------------------------------------------------------|----|
+| gin            | web框架    | [gin-gonic](https://gin-gonic.com/zh-cn/docs/)           | 🆗 |
+| gorm           | orm框架    | [gorm.io](https://gorm.io/zh_CN/docs/index.html)         | 🆗 |
+| mysql          | 数据库      |                                                          | 🆗 |
+| jwt            | 认证       | [golang-jwt](https://github.com/golang-jwt/jwt)          | 🆗 |
+| cors           | 跨域       |                                                          | 🆗 |
+| lancet         | 工具库      | [lancet](https://github.com/duke-git/lancet)             | 🆗 |
+| gorm插件         | 增删改查代码生成 | [gorm](https://plugins.jetbrains.com/plugin/20411-gorm/) | 🆗 |
+| vue-vben-admin | 基于此前端项目  | [vben-js](https://github.com/vbenjs/vue-vben-admin)      | 🆗 |
 
 
 ## 快速上手
@@ -55,17 +34,11 @@
 - 5.进入view目录 运行pnpm install
 - 6.进入view目录 pnpm run dev
 
-### 后端关键部分
+## 演示页面
 
-- common/middleware 中间件
-- common/app 应用配置和功能
-- common/component 一些简单组件
-- common/model 数据库模型
-- common/service 业务逻辑
-- common/tool 工具类
+![2](gorm/img_1.png)
+![1](gorm/img_2.png)
 
-### 扩展
-- 暂无
 
 ## 帮助
 

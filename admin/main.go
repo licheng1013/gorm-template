@@ -4,6 +4,8 @@ import (
 	"admin/api"
 	"common/app"
 	"context"
+	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -16,15 +18,15 @@ func main() {
 	app.ParseAppConfig(data)
 	app.MysqlInit()
 	api.Init()
-	log.Println("http://localhost" + app.Config.Port)
+	log.Println("http://localhost:" + fmt.Sprint(app.Config.Port))
 	//下面都是优雅停机方式
 	srv := &http.Server{
-		Addr:    "0.0.0.0" + app.Config.Port,
+		Addr:    "0.0.0.0:" + fmt.Sprint(app.Config.Port),
 		Handler: app.R,
 	}
 	go func() {
 		// 服务连接
-		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Fatalf("listen: %s\n", err)
 		}
 	}()

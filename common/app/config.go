@@ -11,7 +11,7 @@ type SystemConfig struct {
 	// 排除地址
 	ExcludePath []string `yaml:"excludePath"`
 	// 端口
-	Port string `yaml:"port"`
+	Port int `yaml:"port"`
 }
 
 func ParseAppConfig(data []byte) {
