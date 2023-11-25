@@ -1,7 +1,7 @@
-export function ${methodName}(params) {
+export function ${methodName}(#{${method}?get=params,post=data,default=params}) {
   return request({
     url: '${path}',
     method: '${method}',
-    params
+    #{${method}?get=params,post=data,default=params}
   })
 }
