@@ -12,6 +12,8 @@ type SystemConfig struct {
 	ExcludePath []string `yaml:"excludePath"`
 	// 端口
 	Port int `yaml:"port"`
+	// 上传文件
+	UploadPath string `yaml:"uploadPath"`
 }
 
 func ParseAppConfig(data []byte) {
