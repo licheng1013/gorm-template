@@ -65,8 +65,9 @@ func (t AdminApi) insert(c *gin.Context) {
 
 // 根据主键删除
 func (t AdminApi) delete(c *gin.Context) {
-	_ = c.Bind(&t)
-	service.AdminService.Delete(t.Ids)
+	var v model.Admin
+	_ = c.ShouldBindJSON(&v)
+	service.AdminService.Delete(v.Id)
 	c.JSON(http.StatusOK, model.OkMsg("删除成功！"))
 }
 

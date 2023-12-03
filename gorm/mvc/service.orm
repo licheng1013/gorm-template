@@ -44,6 +44,6 @@ func (t ${name}) Insert(v ${entity})  {
 }
 
 // Delete 根据主键删除
-func (t ${name}) Delete(ids []int)  {
-    t.db().Delete(${entity}{}, ids)
+func (t ${name}) Delete(id int64)  {
+    t.db().Delete(${entity}{}, id)
 }

@@ -116,7 +116,7 @@ function handleDelete(record: Recordable) {
     title: "提示",
     content: "你正在进行删除操作...",
     onOk: async () => {
-      ${tableName}Delete({ids: [record.id]}).then(res => {
+      ${tableName}Delete({id:record.id}).then(res => {
         success("删除成功");
         reload();
       });

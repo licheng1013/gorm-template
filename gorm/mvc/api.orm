@@ -64,7 +64,8 @@ func (t ${name}) insert(c *gin.Context) {
 
 // 根据主键删除
 func (t ${name}) delete(c *gin.Context) {
-	_ = c.Bind(&t)
-	${servicePath}.Delete(t.Ids)
+	var v ${entity}
+	_ = c.ShouldBindJSON(&v)
+	${servicePath}.Delete(v.Id)
 	c.JSON(http.StatusOK, model.OkMsg("删除成功！"))
 }
