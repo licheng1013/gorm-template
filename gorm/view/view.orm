@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import {BasicColumn, BasicTable, FormSchema, useTable,TableAction} from "/@/components/Table";
-import {${tableName}Delete, ${tableName}Insert, ${tableName}List} from "@/api/custom/${tableName}";
+import {${tableName}Delete, ${tableName}Insert, ${tableName}List} from "@/api/custom/${sourceName}";
 import {formatToDateTime} from "@/utils/dateUtil";
 import {useMessage} from "@/hooks/web/useMessage";
 import { BasicModal, useModal } from "@/components/Modal";
