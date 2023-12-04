@@ -28,6 +28,10 @@ type BaseAuthImpl struct {
 }
 
 func isExclude(path string, excludePath []string) bool {
+	// 这里的 path 是没有去出?后面的参数的,所以需要处理一下
+	if strings.Contains(path, "?") {
+		path = strings.Split(path, "?")[0]
+	}
 	//排除路径处理
 	for _, item := range excludePath {
 		var ePath = item

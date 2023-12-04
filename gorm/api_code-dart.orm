@@ -1,7 +1,3 @@
-export function ${methodName}(params) {
-  return request({
-    url: '${path}',
-    method: '${method}',
-    params
-  })
-}
+  static Future<dynamic> ${methodName}({Map<String, dynamic>? params}) async {
+    return await HttpUtil.${method}("${path}", params: params);
+  }
