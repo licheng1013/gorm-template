@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import {BasicColumn, BasicTable, FormSchema, useTable,TableAction} from "/@/components/Table";
-import {adminDelete, adminInsert, adminList} from "@/api/custom/admin";
+import {adminDelete, adminInsert, adminList} from "@/pages/api/admin";
 import {formatToDateTime} from "@/utils/dateUtil";
 import {useMessage} from "@/hooks/web/useMessage";
 import { BasicModal, useModal } from "@/components/Modal";
@@ -171,7 +171,7 @@ function handleDelete(record: Recordable) {
     title: "提示",
     content: "你正在进行删除操作...",
     onOk: async () => {
-      adminDelete({id:record.id}).then(res => {
+      adminDelete({ids: [record.id]}).then(res => {
         success("删除成功");
         reload();
       });

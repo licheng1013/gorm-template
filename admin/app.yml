@@ -1,5 +1,5 @@
 port: 9999 #端口号
-mysqlUrl: "root:root@tcp(192.168.56.101:3306)/t_gorm?charset=utf8mb4&parseTime=True&loc=Local" #数据库链接
+mysqlUrl: "root:root@tcp(192.168.101.90:3306)/t_gorm?charset=utf8mb4&parseTime=True&loc=Local" #数据库链接
 #   - "/*" 排除所有   - "/admin/*" 排除admin下所有
 excludePath:
   - "/"

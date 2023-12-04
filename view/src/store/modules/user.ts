@@ -15,7 +15,7 @@ import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 import { isArray } from '/@/utils/is';
 import { h } from 'vue';
-import {adminLogin, adminUserInfo} from "@/api/custom/admin";
+import {adminLogin, adminUserInfo} from "@/pages/api/admin";
 
 interface UserState {
   userInfo: Nullable<UserInfo>;

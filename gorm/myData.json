@@ -1,0 +1,5 @@
+{
+  "apiPath": "$PROJECT$/view/src/api/custom",
+  "viewPath": "$PROJECT$/view/src/views/custom",
+  "routerPath": "$PROJECT$/view/src/router/routes/modules"
+}

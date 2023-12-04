@@ -17,7 +17,7 @@ const dashboard: AppRouteModule = {
     {
       path: 'analysis',
       name: 'HomeView',
-      component: () => import('/@/views/custom/HomeView.vue'),
+      component: () => import('/@/pages/view/HomeView.vue'),
       meta: {
         title: "首页",
         hideMenu: true,

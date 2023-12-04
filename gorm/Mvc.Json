@@ -1,0 +1,1 @@
+{"api":"$PROJECT$/admin/api","boxApi":true,"boxModel":true,"boxService":true,"enableFormTag":true,"enableHumpTag":true,"enableJsonTag":true,"model":"$PROJECT$/common/model","packageName":"$PROJECT$/common","prefix":"t_","service":"$PROJECT$/common/service","url":"http://localhost:9999"}
