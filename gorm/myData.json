@@ -1,5 +1,6 @@
 {
   "apiPath": "$PROJECT$/view/src/pages/api",
   "viewPath": "$PROJECT$/view/src/pages/view",
-  "routerPath": "$PROJECT$/view/src/pages/modules"
+  "routerPath": "$PROJECT$/view/src/pages/modules",
+  "extendTag": ["-dart"]
 }
