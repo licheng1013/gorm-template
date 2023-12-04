@@ -17,7 +17,7 @@ const dashboard: AppRouteModule = {
     {
       path: '',
       name: '${tableName}View',
-      component: () => import('/@/views/custom/${tableName}View.vue'),
+      component: () => import('/@/pages/view/${tableName}View.vue'),
       meta: {
         title: "模板",
         hideMenu: true,
