@@ -1,0 +1,43 @@
+import 'package:app_template/common/url_util.dart';
+import 'package:app_template/component/pagination/view.dart';
+import 'package:app_template/component/table/table_data.dart';
+import 'package:app_template/component/table/view.dart';
+import 'package:app_template/theme/theme_util.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'logic.dart';
+
+class ${upTableName}Page extends StatelessWidget {
+  ${upTableName}Page({Key? key}) : super(key: key);
+
+  final logic = Get.put(${upTableName}Logic());
+  final state = Get.find<${upTableName}Logic>().state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Obx(() {
+            return TablePage(
+              loading: logic.loading.value,
+              tableData: TableData(
+                  isIndex: true,
+                  columns: logic.columns,
+                  rows: logic.list.value),
+            );
+          }),
+        ),
+        Obx(() {
+          return PaginationPage(
+            total: logic.total.value,
+            changed: (size, page) {
+              logic.find(size, page);
+            },
+          );
+        })
+      ],
+    );
+  }
+}

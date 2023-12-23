@@ -1,0 +1,5 @@
+class ${upTableName}State {
+  ${upTableName}State() {
+    ///Initialize variables
+  }
+}

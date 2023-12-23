@@ -1,0 +1,83 @@
+import 'package:app_template/api/${sourceName}_api.dart';
+import 'package:app_template/common/message_util.dart';
+import 'package:app_template/component/form/form_data.dart';
+import 'package:app_template/component/table/table_data.dart';
+import 'package:app_template/component/ui_edit.dart';
+import 'package:get/get.dart';
+
+import 'state.dart';
+
+class ${upTableName}Logic extends GetxController {
+  final ${upTableName}State state = ${upTableName}State();
+
+  var list = <Map<String, dynamic>>[].obs;
+  var total = 0.obs;
+  var size = 0;
+  var page = 0;
+  var loading = false.obs;
+
+  void find(size, page) {
+    this.size = size;
+    this.page = page;
+    list.clear();
+    loading.value = true;
+    ${upTableName}Api.${tableName}List(params: {
+      "size": size,
+      "page": page,
+    }).then((value) async {
+      total.value = value["total"];
+      list.addAll(TableData.listDyToMap(value["list"]));
+      list.refresh();
+      // 休眠 300 毫米
+      await Future.delayed(const Duration(milliseconds: 300));
+      loading.value = false;
+    });
+  }
+
+  var columns = <ColumnData>[];
+
+  @override
+  void onInit() {
+    super.onInit();
+    columns = [
+      // TableData.multipleSelect(
+      //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
+      // TableData.index(),
+      TableData.index(width: 80),
+${tableColumns}
+      TableData.edit(edit: (d) {
+        form.data = d;
+        form.title = "编辑";
+        UiEdit.requestForm(form,
+            submit: (data) => {
+                  ${upTableName}Api.${tableName}Update(params: data).then((value) {
+                    MessageUtil.show("更新成功!");
+                    find(size, page);
+                    Get.back();
+                  })
+                });
+      }, delete: (d) {
+        ${upTableName}Api.${tableName}Delete(params: {"id": d["id"]}).then((value) {
+          find(size, page);
+        });
+      }),
+    ];
+  }
+
+  var form = FormDto(labelWidth: 80, columns: [
+${formColumns}
+  ]);
+
+  void add() {
+    form.data = {};
+    form.title = "添加";
+    UiEdit.requestForm(form,
+        submit: (data) => {
+              ${upTableName}Api.${tableName}Insert(params: data).then((value) {
+                MessageUtil.show("插入成功!");
+                find(size, page);
+                Get.back();
+              })
+            });
+  }
+}
