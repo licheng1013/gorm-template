@@ -14,6 +14,8 @@ type SystemConfig struct {
 	Port int `yaml:"port"`
 	// 上传文件
 	UploadPath string `yaml:"uploadPath"`
+	// 上传路径
+	UploadUrl string `yaml:"uploadUrl"`
 }
 
 func ParseAppConfig(data []byte) {

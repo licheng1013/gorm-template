@@ -27,5 +27,5 @@ func (t FileApi) upload(c *gin.Context) {
 	if err != nil {
 		tool.AssertErr(err.Error())
 	}
-	c.JSON(http.StatusOK, model.OkMsg("上传成功"))
+	c.JSON(http.StatusOK, model.OkData(app.Config.UploadUrl+file.Filename))
 }

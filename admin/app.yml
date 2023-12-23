@@ -5,6 +5,9 @@ excludePath:
   - "/"
   - "/admin/login"
   - "/admin/*" #排除admin下所有用于测试 flutter 后台
+  - "/file/upload"
   - "/favicon.ico" #排除ico文件
 #文件上传路径
-uploadPath: ".\\"
+uploadPath: "D:\\nginx-1.22.1\\files\\image\\"
+#文件访问路径
+uploadUrl: "http://192.168.101.100:88/image/"
