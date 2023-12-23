@@ -4,7 +4,7 @@ mysqlUrl: "root:root@tcp(192.168.101.90:3306)/t_gorm?charset=utf8mb4&parseTime=T
 excludePath:
   - "/"
   - "/admin/login"
-  - "/admin/list"
+  - "/admin/*" #排除admin下所有用于测试 flutter 后台
   - "/favicon.ico" #排除ico文件
 #文件上传路径
 uploadPath: ".\\"
