@@ -31,6 +31,7 @@ func main() {
 		}
 	}()
 	// 等待中断信号以优雅地关闭服务器（设置 10 秒的超时时间）
+	// 使用 kill -2 pid 或 kill pid 命令进行优雅停机
 	quit := make(chan os.Signal)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
