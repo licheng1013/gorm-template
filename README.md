@@ -2,9 +2,10 @@
 
 ## 介绍
 
-- Goland Gorm插件示例模板项目, 插件件地址: [gorm](https://plugins.jetbrains.com/plugin/20411-gorm/)
+- Goland `Gorm插件`示例模板项目, 插件件地址: [gorm](https://plugins.jetbrains.com/plugin/20411-gorm/)
 - 同时也是一个前后端分离的后台管理系统模板项目
 - 可基于此项目进行二次开发.
+- 有任何问题请加群: `289132257`
 
 ## 要求
 - 安装 go 1.19+
