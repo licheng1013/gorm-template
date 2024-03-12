@@ -50,3 +50,18 @@
 
 - 1.扩展功能,可将Go结构体转换为其他语言类
 - ![](image/router/img_3.png)
+
+
+## 设置
+
+- 文件配置一般在 .idea/gorm 或者 gorm 目录下
+
+### Mvc.Json
+
+- 此文件有些设置需要注意: [Mvc.Json](gorm/Mvc.Json)
+ 
+| 参数                 | 描述                                     | 插件版本要求   |
+|--------------------|----------------------------------------|----------|
+| enableSqlNull      | 为 `true` 则开启sqlNull模式。 默认为`false`      |          |
+| enableCommonResult | 为 `true` 则生成一个返回结果类(在模型目录下)。 默认为`true` | 2024.1.2 |
+

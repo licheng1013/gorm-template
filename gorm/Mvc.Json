@@ -8,6 +8,7 @@
   "enableFormTag": true,
   "enableHumpTag": true,
   "enableSqlNull": false,
+  "enableCommonResult": true,
   "boxApi": true,
   "boxService": true,
   "boxModel": true,
