@@ -1,5 +1,9 @@
 # GormTemplate
 
+## 插件教程
+
+- [Goland Gorm 插件教程](Plugin.md)
+
 ## 介绍
 
 - Goland `Gorm插件`示例模板项目, 插件件地址: [gorm](https://plugins.jetbrains.com/plugin/20411-gorm/)
@@ -37,13 +41,13 @@
 
 ## 演示页面
 
-![2](gorm/img_1.png)
-![1](gorm/img_2.png)
+![2](image/img_1.png)
+![1](image/img_2.png)
 
 ## sqlNull模式
 
 - 如何开启?
-- ![1](gorm/img.png)
+- ![1](image/img.png)
 - 此文件存在于: 项目根目录下 `gorm` 或者 `.idea/gorm` 目录 
 - 如果没有此属性可以手动添加进去即可.
 - 插件版本: 2024.1.1+ 
