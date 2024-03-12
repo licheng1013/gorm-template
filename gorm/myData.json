@@ -3,7 +3,8 @@
   "viewPath": "$PROJECT$/view/src/pages/view",
   "routerPath": "$PROJECT$/view/src/pages/modules",
   "extendTag": [
-    "-dart"
+    "-dart",
+    "-kt"
   ],
   "flutterApi": "$PROJECT$/gorm/dart/test",
   "flutterPage": "$PROJECT$/gorm/dart/test"
