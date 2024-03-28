@@ -16,7 +16,8 @@ func init() {
 func (t AdminApi) init(g *gin.Engine) {
 	// 依次: 分页列表，单条，插入，修改，删除
 	group := g.Group("/admin")
-	group.GET("/list", t.list) //不设置限制条件的画默认查询所有
+	group.GET("/list", t.list)  //不设置限制条件的画默认查询所有
+	group.POST("/list", t.list) //不设置限制条件的画默认查询所有
 	group.GET("/one", t.one)
 	group.POST("/insert", t.insert)
 	group.POST("/update", t.update)

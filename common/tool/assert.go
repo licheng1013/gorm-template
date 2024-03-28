@@ -2,7 +2,6 @@ package tool
 
 import (
 	"github.com/duke-git/lancet/v2/strutil"
-	"log"
 	"unicode/utf8"
 )
 
@@ -24,7 +23,7 @@ func AssertErr(errInfo string) {
 // AssertErrWithErrInfo  断言字符串
 func AssertErrWithErrInfo(err error, errInfo string) {
 	if err != nil {
-		log.Println("错误: ", err)
+		MyLog.Println("错误: ", err)
 		panic(NewServiceError(errInfo))
 	}
 }

@@ -1,9 +1,9 @@
 package component
 
 import (
+	"common/tool"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
-	"log"
 	"strings"
 )
 
@@ -21,7 +21,7 @@ func getToken() {
 	}
 	mac := qbox.NewMac(accessKey, secretKey)
 	upToken := putPolicy.UploadToken(mac)
-	log.Println(upToken)
+	tool.MyLog.Println(upToken)
 }
 
 // DeleteFile 删除文件

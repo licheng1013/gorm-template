@@ -6,7 +6,6 @@ import (
 	"common/tool"
 	"github.com/gin-gonic/gin"
 	"io"
-	"log"
 	"net/http"
 	"runtime/debug"
 )
@@ -17,12 +16,12 @@ func Recover(c *gin.Context) {
 	c.Request.Body = io.NopCloser(bytes.NewReader(body))
 	defer func() {
 		if r := recover(); r != nil {
-			log.Println("错误信息: ", r)
+			tool.MyLog.Println("错误信息: ", r)
 			// 对于不同的请求方式获取不同的传参,有助于定义参数问题
 			if c.Request.Method == "POST" {
-				log.Println("请求Body:", string(body))
+				tool.MyLog.Println("请求Body:", string(body))
 			} else if c.Request.Method == "GET" {
-				log.Println("请求参数:", c.Request.URL.RawQuery)
+				tool.MyLog.Println("请求参数:", c.Request.URL.RawQuery)
 			}
 			debug.PrintStack() //打印错误堆栈信息
 			c.JSON(http.StatusOK, model.Fail(tool.ErrorToString(r)))

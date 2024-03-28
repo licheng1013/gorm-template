@@ -5,7 +5,6 @@ import (
 	"common/model"
 	"common/tool"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -42,7 +41,7 @@ func isExclude(path string, excludePath []string) bool {
 		if strings.HasSuffix(ePath, "/*") {
 			k := strings.TrimSuffix(ePath, "/*")
 			if strings.HasPrefix(path, k) {
-				log.Println("排除路径:", k, "请求路径:", path)
+				tool.MyLog.Println("排除路径:", k, "请求路径:", path)
 				return true
 			}
 		}
@@ -59,7 +58,7 @@ func (b BaseAuthImpl) Auth(c *gin.Context) {
 	//登入认证
 	token := c.Request.Header.Get(Authorization)
 	if token == "" {
-		log.Println("没有登入!")
+		tool.MyLog.Println("没有登入!")
 		c.JSON(http.StatusOK, model.Fail("没有登入!"))
 		c.Abort() //终止访问
 		return
@@ -68,7 +67,7 @@ func (b BaseAuthImpl) Auth(c *gin.Context) {
 	data, err := app.JwtUtil.ParseToken(token)
 	if err != nil {
 		// -10 表示登入失效了,需要重新登入
-		log.Println("登入失效!")
+		tool.MyLog.Println("登入失效!")
 		c.JSON(http.StatusOK, model.Result{Code: -10, Msg: "登入失效!"})
 		c.Abort() //终止访问
 		return

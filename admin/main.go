@@ -3,6 +3,7 @@ package main
 import (
 	"admin/api"
 	"common/app"
+	"common/tool"
 	"context"
 	"errors"
 	"fmt"
@@ -18,7 +19,7 @@ func main() {
 	app.ParseAppConfig(data)
 	app.MysqlInit()
 	api.Init()
-	log.Println("http://localhost:" + fmt.Sprint(app.Config.Port))
+	tool.MyLog.Println("http://localhost:" + fmt.Sprint(app.Config.Port))
 	//下面都是优雅停机方式
 	srv := &http.Server{
 		Addr:    "0.0.0.0:" + fmt.Sprint(app.Config.Port),
@@ -35,11 +36,11 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
-	log.Println("关闭服务器...")
+	tool.MyLog.Println("关闭服务器...")
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatal("服务器关闭：", err)
 	}
-	log.Println("服务器退出")
+	tool.MyLog.Println("服务器退出")
 }

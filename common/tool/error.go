@@ -2,7 +2,6 @@ package tool
 
 import (
 	"fmt"
-	"log"
 )
 
 // NewServiceError 使用关键字 panic 抛出异常,否则无法识别到
@@ -26,7 +25,7 @@ func ErrorToString(r interface{}) string {
 	case ServiceError:
 		return v.Error()
 	default:
-		log.Println("系统错误:", v)
+		MyLog.Println("系统错误:", v)
 		return fmt.Sprint(v)
 	}
 }

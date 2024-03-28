@@ -3,17 +3,17 @@ package api
 import (
 	"common/app"
 	"common/middleware"
+	"common/tool"
 	"github.com/gin-gonic/gin"
-	"log"
 )
 
 // Init 注意包注册必须要在包内的第一个. 因为go是按字母顺序初始化包的
 func Init() {
-	log.Println("注册Admin-Api")
+	tool.MyLog.Println("注册Admin-Api")
 }
 
 func init() {
-	log.Println("注册中间件")
+	tool.MyLog.Println("注册中间件")
 	// 跨域中间件必须在前面,否则会报错
 	app.R.Use(gin.Logger())
 	app.R.Use(middleware.Cors())
