@@ -9,9 +9,9 @@
   "enableHumpTag": true,
   "enableSqlNull": false,
   "enableCommonResult": true,
+  "pathPrefix": "",
   "boxApi": true,
   "boxService": true,
   "boxModel": true,
-  "url": "http://localhost:9999",
-  "pathPrefix": ""
+  "url": "http://localhost:9999"
 }

@@ -7,3 +7,8 @@ import (
 type ${name} struct{
     ${field}
 }
+
+// 测试使用，如果不需要可以删除
+func (${name}) TableName() string {
+	return "${tableName}"
+}
