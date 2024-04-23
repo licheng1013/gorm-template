@@ -1,9 +1,0 @@
-port: 9998 #端口号
-mysqlUrl: "root:root@tcp(192.168.101.90:3306)/t_gorm?charset=utf8mb4&parseTime=True&loc=Local" #数据库链接
-#如果你的路径是 / 杆结尾那么请 + 上/
-excludePath:
-  - "/"
-  - "/admin/login"
-  - "/favicon.ico" #排除ico文件
-#文件上传路径
-uploadPath: ".\\"
