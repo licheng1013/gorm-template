@@ -56,7 +56,7 @@
 
 - 文件配置一般在 .idea/gorm 或者 gorm 目录下
 
-### Mvc.Json
+## Mvc.Json
 
 - 此文件有些设置需要注意: [Mvc.Json](gorm/Mvc.Json)
  
@@ -65,4 +65,11 @@
 | enableSqlNull      | 为 `true` 则开启sqlNull模式。 默认为`false`      |           |
 | enableCommonResult | 为 `true` 则生成一个返回结果类(在模型目录下)。 默认为`true` | 2024.1.2+ |
 | pathPrefix         | 控制台路径导航到接口设置,默认为""空, 解决全局前缀路径没法识别      | 2024.1.3+ |
+| enableGormTag      | 为 `true` 则开启gorm tag的信息 。 默认为`true`    | 2024.1.4+ |
+
+
+### enableGormTag
+
+- 示例
+- ![](image/img_7.png)
 
