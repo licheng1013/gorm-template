@@ -4,10 +4,12 @@ import (
 	"bytes"
 	"common/model"
 	"common/tool"
-	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
 	"runtime/debug"
+	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 // Recover 全局异常处理器
@@ -19,6 +21,10 @@ func Recover(c *gin.Context) {
 			tool.MyLog.Println("错误信息: ", r)
 			// 对于不同的请求方式获取不同的传参,有助于定义参数问题
 			if c.Request.Method == "POST" {
+				// 如果是上传文件则跳过
+				if strings.Contains(c.Request.Header.Get("Content-Type"),"multipart/form-data") {
+					return
+				}
 				tool.MyLog.Println("请求Body:", string(body))
 			} else if c.Request.Method == "GET" {
 				tool.MyLog.Println("请求参数:", c.Request.URL.RawQuery)
