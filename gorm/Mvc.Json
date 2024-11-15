@@ -1,9 +1,9 @@
 {
   "prefix" : "t_",
-  "packageName" : "$PROJECT$/common",
-  "api" : "$PROJECT$/admin/api",
-  "service" : "$PROJECT$/common/service",
-  "model" : "$PROJECT$/common/model",
+  "packageName" : "${project}/admin",
+  "api" : "${project}/admin/api",
+  "service" : "${project}/common/service",
+  "model" : "${project}/common/model",
   "enableJsonTag" : true,
   "enableFormTag" : true,
   "enableHumpTag" : true,
