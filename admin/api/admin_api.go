@@ -1,17 +1,11 @@
 package api
 
 import (
-	"common/app"
 	"common/model"
 	"common/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
-
-func init() {
-	c := &AdminApi{}
-	c.init(app.R) //这里需要引入你的gin框架的实例
-}
 
 func (t AdminApi) init(g *gin.Engine) {
 	// 依次: 分页列表，单条，插入，修改，删除

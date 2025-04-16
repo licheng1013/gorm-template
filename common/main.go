@@ -1,8 +1,8 @@
 package main
 
 import (
-	"common/app"
 	"common/model"
+	"common/tool"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -12,9 +12,9 @@ import (
 
 func main() {
 	// 必须要在数据库里面存在
-	a := app.JwtUtil.CreateTokenEasy(3)
-	b := app.JwtUtil.CreateTokenEasy(12313)
-	c := app.JwtUtil.CreateTokenEasy(12314)
+	a := tool.JwtUtil.CreateTokenEasy(3)
+	b := tool.JwtUtil.CreateTokenEasy(12313)
+	c := tool.JwtUtil.CreateTokenEasy(12314)
 	m := map[int]string{
 		0: a,
 		1: b,

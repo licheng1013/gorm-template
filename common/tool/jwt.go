@@ -1,7 +1,6 @@
-package app
+package tool
 
 import (
-	"common/tool"
 	"errors"
 	"fmt"
 	"github.com/golang-jwt/jwt/v5"
@@ -44,7 +43,7 @@ func (j Jwt) CreateToken(ID interface{}) (string, error) {
 // CreateTokenEasy  生成一个3天的Token
 func (j Jwt) CreateTokenEasy(ID interface{}) string {
 	token, err := j.CreateToken(ID)
-	tool.AssertErrWithErrInfo(err, "生成Token失败")
+	AssertErrWithErrInfo(err, "生成Token失败")
 	return token
 }
 

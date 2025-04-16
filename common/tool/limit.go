@@ -1,4 +1,4 @@
-package component
+package tool
 
 import (
 	"sync"

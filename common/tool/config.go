@@ -1,6 +1,9 @@
-package app
+package tool
 
-import "gopkg.in/yaml.v3"
+import (
+	"gopkg.in/yaml.v3"
+	"os"
+)
 
 // Config 全局配置变量
 var Config *SystemConfig
@@ -18,7 +21,9 @@ type SystemConfig struct {
 	UploadUrl string `yaml:"uploadUrl"`
 }
 
-func ParseAppConfig(data []byte) {
+func ReadConfig(filePath string) {
+	MyLog.Println("读取配置")
+	data, _ := os.ReadFile(filePath)
 	err := yaml.Unmarshal(data, &Config)
 	if err != nil {
 		panic("解析配置失败!")

@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"common/app"
 	"common/model"
 	"common/tool"
 	"github.com/gin-gonic/gin"
@@ -52,7 +51,7 @@ func isExclude(path string, excludePath []string) bool {
 // Auth 管理员后台处理认证器
 func (b BaseAuthImpl) Auth(c *gin.Context) {
 	path := c.Request.RequestURI
-	if isExclude(path, app.Config.ExcludePath) {
+	if isExclude(path, tool.Config.ExcludePath) {
 		return
 	}
 	//登入认证
@@ -64,7 +63,7 @@ func (b BaseAuthImpl) Auth(c *gin.Context) {
 		return
 	}
 	// 验证用户是否存在
-	data, err := app.JwtUtil.ParseToken(token)
+	data, err := tool.JwtUtil.ParseToken(token)
 	if err != nil {
 		// -10 表示登入失效了,需要重新登入
 		tool.MyLog.Println("登入失效!")
@@ -77,7 +76,7 @@ func (b BaseAuthImpl) Auth(c *gin.Context) {
 		tool.AssertErr("用户不存在")
 	}
 	// 保存用户信息到上下文中
-	app.LocalData.SaveCtx(userId)
+	tool.LocalData.SaveCtx(userId)
 	c.Next()
-	app.LocalData.ClearCtx()
+	tool.LocalData.ClearCtx()
 }

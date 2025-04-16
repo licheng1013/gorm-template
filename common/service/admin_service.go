@@ -1,7 +1,6 @@
 package service
 
 import (
-	"common/app"
 	"common/model"
 	"common/tool"
 	"github.com/gin-gonic/gin"
@@ -15,7 +14,7 @@ type adminService struct {
 }
 
 func (t adminService) db() *gorm.DB {
-	return app.Db
+	return tool.Db
 }
 
 // List 分页列表
@@ -54,14 +53,14 @@ func (t adminService) Login(v model.Admin) interface{} {
 	// 查询用户是否存在
 	var adminDb model.Admin
 	t.db().Where(model.Admin{UserName: v.UserName}).First(&adminDb)
-	if adminDb.Id == 0 || adminDb.Password != app.GetMd5Password(v.Password, adminDb.Salt) {
+	if adminDb.Id == 0 || adminDb.Password != tool.GetMd5Password(v.Password, adminDb.Salt) {
 		tool.AssertErr("密码或账号错误")
 	}
-	return gin.H{"token": app.JwtUtil.CreateTokenEasy(adminDb.Id)}
+	return gin.H{"token": tool.JwtUtil.CreateTokenEasy(adminDb.Id)}
 }
 
 func (t adminService) GetAdminId() int64 {
-	return app.LocalData.GetCtx().(int64)
+	return tool.LocalData.GetCtx().(int64)
 }
 
 func (t adminService) GetUserInfo() interface{} {

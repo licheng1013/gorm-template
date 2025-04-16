@@ -1,7 +1,6 @@
-package app
+package tool
 
 import (
-	"common/component"
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,4 +8,4 @@ import (
 var R = gin.New()
 
 // GlobalCache 全局缓存
-var GlobalCache = component.NewCache()
+var GlobalCache = NewCache()

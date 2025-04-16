@@ -2,7 +2,6 @@ package main
 
 import (
 	"admin/api"
-	"common/app"
 	"common/tool"
 	"context"
 	"errors"
@@ -15,15 +14,15 @@ import (
 )
 
 func main() {
-	data, _ := os.ReadFile("app.yml")
-	app.ParseAppConfig(data)
-	app.MysqlInit()
+	tool.ReadConfig("app.yml")
+	//gin.SetMode(gin.ReleaseMode)
+	tool.DbInit()
 	api.Init()
-	tool.MyLog.Println("http://localhost:" + fmt.Sprint(app.Config.Port))
+	tool.MyLog.Println("http://localhost:" + fmt.Sprint(tool.Config.Port))
 	//下面都是优雅停机方式
 	srv := &http.Server{
-		Addr:    "0.0.0.0:" + fmt.Sprint(app.Config.Port),
-		Handler: app.R,
+		Addr:    "0.0.0.0:" + fmt.Sprint(tool.Config.Port),
+		Handler: tool.R,
 	}
 	go func() {
 		// 服务连接
