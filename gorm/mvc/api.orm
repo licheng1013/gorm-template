@@ -1,7 +1,6 @@
 package ${model}
 
 import (
-	"common/app"
 	"common/model"
 	"common/service"
 	"github.com/gin-gonic/gin"
@@ -20,10 +19,11 @@ func (t ${name}) init(g *gin.Engine) {
 type ${name} struct {}
 
 func (t ${name}) list(c *gin.Context) {
-	_ = c.Bind(&t)
+	var page model.PageVo
+	_ = c.Bind(&page)
 	var v ${entity}
 	_ = c.Bind(&v)
-	c.JSON(http.StatusOK, model.OkData(${servicePath}.List(t.Page, t.Size, v)))
+	c.JSON(http.StatusOK, model.OkData(${servicePath}.List(page.Page, page.Size, v)))
 }
 
 func (t ${name}) one(c *gin.Context) {

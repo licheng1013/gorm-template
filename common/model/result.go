@@ -18,6 +18,6 @@ func Fail(msg string) Result {
 }
 
 type PageVo struct {
-	Page int64 `json:"page" form:"page,default=1"`
-	Size int64 `json:"size" form:"size,default=10"`
+	Page int `json:"page" form:"page,default=1"`
+	Size int `json:"size" form:"size,default=10"`
 }
