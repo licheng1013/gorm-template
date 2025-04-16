@@ -18,9 +18,9 @@ func (t ${name}) db() *gorm.DB {
 }
 
 // List 分页列表
-func (t ${name}) List(page, size int, v *${entity}) gin.H  {
+func (t ${name}) List(page, size int, v ${entity}) gin.H  {
 	lists := make([]${entity}, 0) // 结果
-	t.db().Model(&${entity}{}).Where(&v).Order("").Offset((page - 1) * size).Limit(size).Find(&lists)
+	t.db().Model(&${entity}{}).Where(&v).Order("create_time DESC").Offset((page - 1) * size).Limit(size).Find(&lists)
 	var total int64	// 统计
 	t.db().Model(&v).Where(&v).Count(&total)
     h := gin.H{"list": lists, "total": total}
