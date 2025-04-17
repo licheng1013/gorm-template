@@ -17,8 +17,6 @@
 - 4.选择生成的目录
 - ![](image/img_6.png)
 - 5.`支持模板生成可定制` 
-- 模板配置目录在 .idea/gorm/mvc (默认可能是隐藏,通过文件管理器查看)
-- 其次是项目下 gorm/mvc 目录(优先级高)
 
 ### 接口导航
 
@@ -35,23 +33,6 @@
 - 1.运行效果
 - ![](image/img_9.png)
 
-### 接口扩展
-
-- 1.扩展功能
-- ![](image/router/img_2.png)
-- 2.`支持请求模板可定制`
-- 3.如果有多套请求模板,请通过 [myData.json](gorm/myData.json) 的数组字段 `extendTag` 进行扩展,如:
-
-```json
-{
-  "extendTag": [
-    "-dart",
-    "-kt"
-  ]
-}
-```
-- 模板配置目录在 .idea/gorm (默认可能是隐藏,通过文件管理器查看)
-- 其次是项目下 gorm 目录(优先级高)
 
 ### 结构体扩展
 
@@ -61,10 +42,8 @@
 
 ## 设置
 
-- 文件配置一般在 .idea/gorm 或者 gorm 目录下
-
 ## Mvc.Json
-
+- 文件配置一般在 .idea/gorm 或者 gorm 目录下
 - 此文件有些设置需要注意: [Mvc.Json](gorm/Mvc.Json)
 - 如果字段不存在可以手动添加进去即可
  
@@ -73,7 +52,7 @@
 | enableSqlNull      | 为 `true` 则开启sqlNull模式。 默认为`false`      |           |
 | enableCommonResult | 为 `true` 则生成一个返回结果类(在模型目录下)。 默认为`true` | 2024.1.2+ |
 | pathPrefix         | 控制台路径导航到接口设置,默认为""空, 解决全局前缀路径没法识别      | 2024.1.3+ |
-| enableGormTag      | 为 `true` 则开启gorm tag的信息 。 默认为`false`    | 2024.1.5+ |
+| enableGormTag      | 为 `true` 则开启gorm tag的信息 。 默认为`false`   | 2024.1.5+ |
 
 
 ### enableGormTag
@@ -83,8 +62,16 @@
 
 ### sqlNull模式
 
-- 如何开启?
+- 字段改成
 - ![1](image/img.png)
-- 此文件存在于: 项目根目录下 `gorm` 或者 `.idea/gorm` 目录
-- 如果没有此属性可以手动添加进去即可.
-- 插件版本: 2024.1.1+ 
+
+### 接口扩展
+
+```json
+{
+  "extendTag": [
+    "-dart",
+    "-kt"
+  ]
+}
+```
