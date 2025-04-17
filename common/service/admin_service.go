@@ -17,8 +17,7 @@ func (t adminService) db() *gorm.DB {
 	return tool.Db
 }
 
-// List 分页列表
-func (t adminService) List(page, size int, v *model.Admin) gin.H {
+func (t adminService) List(page, size int, v model.Admin) gin.H {
 	lists := make([]model.Admin, 0) // 结果
 	t.db().Model(&model.Admin{}).Where(&v).Order("").Offset((page - 1) * size).Limit(size).Find(&lists)
 	var total int64 // 统计
@@ -27,23 +26,19 @@ func (t adminService) List(page, size int, v *model.Admin) gin.H {
 	return h
 }
 
-// One 根据主键查询
 func (t adminService) One(id interface{}) (v model.Admin) {
 	t.db().Find(&v, id)
 	return
 }
 
-// Update 修改记录
 func (t adminService) Update(v model.Admin) {
 	t.db().Model(&v).Updates(v)
 }
 
-// Insert 插入记录
 func (t adminService) Insert(v model.Admin) {
 	t.db().Save(&v)
 }
 
-// Delete 根据主键删除
 func (t adminService) Delete(id int64) {
 	tool.AssertErr("测试不允许删除")
 	t.db().Delete(model.Admin{}, id)

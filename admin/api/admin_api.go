@@ -8,10 +8,8 @@ import (
 )
 
 func (t AdminApi) init(g *gin.Engine) {
-	// 依次: 分页列表，单条，插入，修改，删除
 	group := g.Group("/admin")
-	group.GET("/list", t.list)  //不设置限制条件的画默认查询所有
-	group.POST("/list", t.list) //不设置限制条件的画默认查询所有
+	group.GET("/list", t.list)
 	group.GET("/one", t.one)
 	group.POST("/insert", t.insert)
 	group.POST("/update", t.update)
@@ -32,7 +30,7 @@ func (t AdminApi) list(c *gin.Context) {
 	_ = c.Bind(&t)
 	v := model.Admin{}
 	_ = c.Bind(&v)
-	c.JSON(http.StatusOK, model.OkData(service.AdminService.List(t.Page, t.Size, &v)))
+	c.JSON(http.StatusOK, model.OkData(service.AdminService.List(t.Page, t.Size, v)))
 }
 
 // 根据主键Id查询记录
