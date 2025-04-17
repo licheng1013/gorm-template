@@ -14,5 +14,10 @@
   "boxApi" : true,
   "boxService" : true,
   "boxModel" : true,
-  "url" : "http://localhost:9999"
+  "url" : "http://localhost:9999",
+  "extendTag" : [
+    "-dart",
+    "-kt"
+  ],
+  "scanModelPath" : ""
 }
