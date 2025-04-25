@@ -10,7 +10,6 @@ import (
 func (t ${name}) init(g *gin.Engine) {
 	group := g.Group("/${path}")
 	group.GET("/list", t.list)
-	group.GET("/one", t.one)
 	group.POST("/insert", t.insert)
 	group.POST("/update", t.update)
 	group.POST("/delete", t.delete)
@@ -24,12 +23,6 @@ func (t ${name}) list(c *gin.Context) {
 	var v ${entity}
 	_ = c.Bind(&v)
 	c.JSON(http.StatusOK, model.OkData(${servicePath}.List(page.Page, page.Size, v)))
-}
-
-func (t ${name}) one(c *gin.Context) {
-	var v ${entity}
-	_ = c.Bind(&v)
-	c.JSON(http.StatusOK, model.OkData(${servicePath}.One(v.${id})))
 }
 
 func (t ${name}) update(c *gin.Context) {
