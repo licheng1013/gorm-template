@@ -16,24 +16,18 @@ func (t ${name}) db() *gorm.DB {
 	return tool.Db
 }
 
-func (t ${name}) List(page, size int, v ${entity}) gin.H  {
-	lists := make([]${entity}, 0)
-	dbWere := t.db().Model(v).Where(v)
-	var total int64
-	dbWere.Count(&total)
-	dbWere.Order("create_time DESC").Offset((page - 1) * size).Limit(size).Find(&lists)
-    h := gin.H{"list": lists, "total": total}
-	return h
+func (t ${name}) List(page, size int, v ${entity}) model.PageData[${entity}]  {
+	return Page(v,page,size)
 }
 
 func (t ${name}) Update(v ${entity})  {
-    t.db().Model(&v).Updates(v)
+    Update(v,v)
 }
 
 func (t ${name}) Insert(v ${entity})  {
-    t.db().Save(&v)
+    Insert(v)
 }
 
 func (t ${name}) Delete(id int64)  {
-    t.db().Delete(${entity}{}, id)
+    DeleteById[${entity}](id)
 }

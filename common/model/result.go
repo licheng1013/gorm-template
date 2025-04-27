@@ -22,7 +22,7 @@ type PageVo struct {
 	Size int `json:"size" form:"size,default=10"`
 }
 
-type PageResult[T any] struct {
+type PageData[T any] struct {
 	Total int64 `json:"total"`
 	List  []T   `json:"list"`
 }

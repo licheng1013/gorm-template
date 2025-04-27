@@ -12,13 +12,13 @@ func One[T any](e T) {
 	tool.AssertErrWithErrInfo(err, "查询失败!")
 }
 
-func Page[T any](e T, page, size int) model.PageResult[T] {
+func Page[T any](e T, page, size int) model.PageData[T] {
 	lists := make([]T, 0) // 结果
 	w := tool.Db.Model(e).Where(e)
 	var total int64 // 统计
 	w.Count(&total)
 	w.Order("create_time DESC").Offset((page - 1) * size).Limit(size).Find(&lists)
-	return model.PageResult[T]{
+	return model.PageData[T]{
 		List:  lists,
 		Total: total,
 	}

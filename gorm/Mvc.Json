@@ -15,9 +15,6 @@
   "boxService" : true,
   "boxModel" : true,
   "url" : "http://localhost:9999",
-  "extendTag" : [
-    "-dart",
-    "-kt"
-  ],
+  "extendTag" : [ "-dart", "-kt" ],
   "scanModelPath" : ""
 }
