@@ -43,7 +43,7 @@ func (j Jwt) CreateToken(ID interface{}) (string, error) {
 // CreateTokenEasy  生成一个3天的Token
 func (j Jwt) CreateTokenEasy(ID interface{}) string {
 	token, err := j.CreateToken(ID)
-	AssertErrWithErrInfo(err, "生成Token失败")
+	AssertError(err, "生成Token失败")
 	return token
 }
 

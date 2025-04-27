@@ -6,7 +6,7 @@ import "common/service"
 type AdminAuth struct {
 }
 
-func (b AdminAuth) GetUserId(id interface{}) int64 {
+func (b AdminAuth) GetUserId(id any) int64 {
 	user := service.AdminService.One(id)
 	return user.Id
 }

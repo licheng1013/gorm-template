@@ -29,6 +29,10 @@ func (t adminService) Insert(v model.Admin) {
 	Insert(v)
 }
 
+func (t adminService) One(id any) model.Admin {
+	return OneById[model.Admin](id)
+}
+
 func (t adminService) Delete(id int64) {
 	tool.AssertErr("测试不允许删除")
 	DeleteById[model.Admin](id)

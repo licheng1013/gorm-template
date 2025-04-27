@@ -20,6 +20,6 @@ func DbInit() {
 			SingularTable: true, // true不在表后面+ s，
 		},
 	})
-	AssertErrWithErrInfo(err, "Mysql:初始化失败!")
+	AssertError(err, "Mysql:初始化失败!")
 	Db = db
 }
