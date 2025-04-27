@@ -8,6 +8,10 @@
 - 2.创建数据库并导入sql -> t_gorm.sql, 修改 admin/app.yml 配置文件 mysql 链接
 - 3.安装go依赖并运行admin/main.go
 
+## 泛型
+
+- 代码模板生成已支持泛型化
+
 ## 插件教程
 
 - 增删改查代码生成器
