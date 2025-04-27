@@ -3,7 +3,6 @@ package ${model}
 import (
 	"common/model"
 	"common/tool"
-	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
 
